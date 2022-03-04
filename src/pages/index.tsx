@@ -1,9 +1,20 @@
 import type { NextPage } from 'next'
 import Layout from '../components/Layout'
+import Tabela from '../components/Tabela'
+import Cliente from '../core/Client'
 
 
 
 const Home: NextPage = () => {
+
+  const clientes = [
+    new Cliente("Ana", 34, "1"),
+    new Cliente("Bia", 42, "2"),
+    new Cliente("Carol", 12, "3"),
+    new Cliente("Luiz", 55, "4"),
+    new Cliente("Carlos", 22, "5"),
+  ]
+
   return (
     <div className={`
       flex justify-center items-center h-screen
@@ -12,7 +23,7 @@ const Home: NextPage = () => {
     `}
     >
       <Layout titulo="Cadastro Simples">
-        <span>Conteudo</span>
+        <Tabela clientes={clientes}></Tabela>
       </Layout>
     </div>
   )
