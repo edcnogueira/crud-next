@@ -15,6 +15,14 @@ const Home: NextPage = () => {
     new Cliente("Carlos", 22, "5"),
   ]
 
+  function clienteSelecionado(cliente: Cliente) {
+    
+  }
+
+  function clienteExcluido(cliente: Cliente) {
+    
+  }
+
   return (
     <div className={`
       flex justify-center items-center h-screen
@@ -23,7 +31,7 @@ const Home: NextPage = () => {
     `}
     >
       <Layout titulo="Cadastro Simples">
-        <Tabela clientes={clientes}></Tabela>
+        <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado} clienteExcluido={clienteExcluido}></Tabela>
       </Layout>
     </div>
   )
