@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useState } from 'react'
 import Botao from '../components/Botao'
 import Formulario from '../components/Formulario'
 import Layout from '../components/Layout'
@@ -25,6 +26,12 @@ const Home: NextPage = () => {
     
   }
 
+  function salvarCliente(cliente: Cliente) {
+    console.log(cliente)
+  }
+
+  const [visivel, setVisivel] = useState<"tabela" | "form">("tabela")
+
   return (
     <div className={`
       flex justify-center items-center h-screen
@@ -33,11 +40,18 @@ const Home: NextPage = () => {
     `}
     >
       <Layout titulo="Cadastro Simples">
-        <div className="flex justify-end">
-          <Botao cor="green" className="mb-4">Novo Cliente</Botao>
-        </div>
-        <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado} clienteExcluido={clienteExcluido}></Tabela>
-        <Formulario cliente={clientes[0]}></Formulario>
+        {visivel === "tabela" ? (
+          <>
+          <div className="flex justify-end">
+            <Botao onClick={() => setVisivel("form")} cor="green" className="mb-4">Novo Cliente</Botao>
+          </div>
+          <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado} clienteExcluido={clienteExcluido}></Tabela>
+        </>
+        ) : (
+          <Formulario clienteMudou={salvarCliente} cliente={clientes[0]}  cancelado={() => setVisivel("tabela")}></Formulario>
+        )}
+        
+        
       </Layout>
     </div>
   )
