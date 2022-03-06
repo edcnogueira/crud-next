@@ -1,5 +1,5 @@
 interface BotaoProps{
-    cor?:"green" | "blue" | "gray"
+    cor?:"green" | "blue" | "gray" | "red"
     className?:string
     children: any
     onClick?:() => void
